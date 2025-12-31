@@ -18,11 +18,11 @@ pkg install git -y
 ```
 3. Clone this repo
 ```
-git clone https://github.com/purplemashu/me-cli
+git clone https://github.com/HackersXl/dorbaru
 ```
 4. Open the folder
 ```
-cd me-cli
+cd dorbaru
 ```
 5. Setup
 ```
