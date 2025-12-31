@@ -1,38 +1,38 @@
 import os
 import sys
 import time
-import requests # Biarin di-import biar ga error kalau ada yg manggil librarynya
 
-# --- FUNGSI MEMBERSIHKAN LAYAR ---
+# --- FUNGSI HELPER (YANG TADI ILANG) ---
 def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-# --- FUNGSI PAUSE ---
 def pause():
     print("")
-    input("Tekan Enter untuk kembali...")
+    input("Tekan Enter untuk lanjut...")
+
+def format_quota_byte(size_in_bytes):
+    try:
+        size = int(size_in_bytes)
+        if size >= 1_000_000_000:
+            return f"{size / 1_000_000_000:.2f} GB"
+        elif size >= 1_000_000:
+            return f"{size / 1_000_000:.2f} MB"
+        elif size >= 1_000:
+            return f"{size / 1_000:.2f} KB"
+        else:
+            return f"{size} B"
+    except:
+        return "0 B"
 
 # ==========================================
 #  BAGIAN BYPASS (JANTUNG OPERASINYA)
 # ==========================================
-
 def verify_api_key(api_key):
-    """
-    Fungsi ini aslinya ngecek ke server mashu.lol.
-    TAPI SEKARANG KITA PAKSA JADI 'TRUE' (VALID).
-    """
-    # print(f"Mengecek key: {api_key}...") <-- Gak usah diprint biar cepet
-    
-    # Kita tipu scriptnya, seolah-olah server bilang OK.
+    # KITA PAKSA JADI 'TRUE' (VALID)
     return True
 
-# Kadang ada fungsi get_hwid juga di file ini yang bikin error
 def get_hwid():
-    return "HWID-BYPASS-BY-WAROENG-DIGITALL"
+    return "HWID-BYPASS-BY-REZA-XYZ"
 
-# Kalau ada fungsi validate lain, kita kasih True semua
 def validate_license(key):
     return True
