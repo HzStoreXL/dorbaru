@@ -68,15 +68,18 @@ def show_hot_menu():
     in_bookmark_menu = True
     while in_bookmark_menu:
         clear_screen()
-        print(box("PAKET HOT V1", [], center=True))
-        spinner("Mengambil data paket hot...")
+        print("=" * WIDTH)
+        print("🔥 Paket  Hot 🔥".center(WIDTH))
+        print("=" * WIDTH)
+        
+        hot_packages = []
+        
+        with open("hot_data/hot.json", "r", encoding="utf-8") as f:
+            hot_packages = json.load(f)
 
-        url = "https://me.mashu.lol/pg-hot.json"
-        response = requests.get(url, timeout=30)
-        if response.status_code != 200:
-            print(box("FAILED", ["Gagal mengambil data hot package."], red))
-            pause()
-            return None
+        for idx, p in enumerate(hot_packages):
+            print(f"{idx + 1}. {p['family_name']} - {p['variant_name']} - {p['option_name']}")
+            print("-" * WIDTH)
 
         hot_packages = response.json()
         print(box("DAFTAR HOT PACKAGE", [], center=True))
@@ -189,15 +192,19 @@ def show_hot_menu2():
     in_bookmark_menu = True
     while in_bookmark_menu:
         clear_screen()
-        print(box("PAKET HOT V2", [], center=True))
-        spinner("Mengambil data hot package...")
+        main_package_detail = {}
+        print("=" * WIDTH)
+        print("🔥 Paket  Hot 2 🔥".center(WIDTH))
+        print("=" * WIDTH)
+        
+        hot_packages = []
+        
+        with open("hot_data/hot2.json", "r", encoding="utf-8") as f:
+            hot_packages = json.load(f)
 
-        url = "https://me.mashu.lol/pg-hot2.json"
-        response = requests.get(url, timeout=30)
-        if response.status_code != 200:
-            print(box("FAILED", ["Gagal mengambil data hot package."], red))
-            pause()
-            return None
+        for idx, p in enumerate(hot_packages):
+            print(f"{idx + 1}. {p['name']}\n   Harga: {p['price']}")
+            print("-" * WIDTH)
 
         hot_packages = response.json()
         print(box("DAFTAR HOT PACKAGE", [], center=True))
