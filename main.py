@@ -218,11 +218,16 @@ def main():
             u = show_account_menu()
             if u: AuthInstance.set_active_user(u)
 
+
 if __name__ == "__main__":
     try:
-        print(box("Checking for updates...", []))
-        spinner("Memeriksa update")
-        if check_for_updates(): pause()
+        print("Checking for updates...")
+        need_update = check_for_updates()
+        if need_update:
+            pause()
+
         main()
     except KeyboardInterrupt:
-        print(box("Keluar", ["Program dihentikan."]))
+        print("\nExiting the application.")
+    # except Exception as e:
+    #     print(f"An error occurred: {e}")
